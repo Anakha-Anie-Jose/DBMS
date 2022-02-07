@@ -1,0 +1,118 @@
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES('BIOLOGY','WATSON',90000);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES('COMP.SCI','TAYLOR',100000);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES('ELEC.ENG','TAYLOR',85000);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES('FINANCE','PAINTER',120000);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES('HISTORY','PAINTER',50000);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES('MUSIC','PACKARD',80000);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES('PHYSICS','WATSON',70000);
+
+1 row created.
+
+DEPT_NAME            BUILDING
+-------------------- --------------------------------------------------
+    BUDGET
+----------
+BIOLOGY              WATSON
+     90000
+
+COMP.SCI             TAYLOR
+    100000
+
+ELEC.ENG             TAYLOR
+     85000
+
+
+DEPT_NAME            BUILDING
+-------------------- --------------------------------------------------
+    BUDGET
+----------
+FINANCE              PAINTER
+    120000
+
+HISTORY              PAINTER
+     50000
+
+MUSIC                PACKARD
+     80000
+
+
+DEPT_NAME            BUILDING
+-------------------- --------------------------------------------------
+    BUDGET
+----------
+PHYSICS              WATSON
+     70000
+
+
+SQL> INSERT INTO COURSE
+  2  VALUES('CS-347','DATABASE SYSTEM','COMP.SCI',3);
+
+1 row created.
+SQL> INSERT INTO COURSE
+  2  VALUES('EE-181','INTRO.TO DIGITAL SYS','ELEC.ENG',3);
+
+1 row created.
+SQL> INSERT INTO COURSE
+  2  VALUES('FIN-201','INVESTEMENT BANKING','FINANCE',3);
+
+1 row created.
+
+SQL> INSERT INTO COURSE
+  2  VALUES('HIS-351','WORLD HISTORY','HISTORY',3);
+
+1 row created.
+
+SQL> INSERT INTO COURSE
+  2  VALUES('MU-199','MUSIC VIDEO PRO','MUSIC',3);
+
+1 row created.
+
+SQL> INSERT INTO COURSE
+  2  VALUES('PHY-101','PHYSICAL PRINCIPLES','PHYSICS',4);
+
+1 row created.
+SQL> select * from course;
+
+COURSE_ID  TITLE                DEPT_NAME               CREDITS
+---------- -------------------- -------------------- ----------
+BIO-101    INTRO. TO BIO        BIOLOGY                       4
+BIO-301    GENETICS             BIOLOGY                       4
+BIO-399    COMPUTATIONAL BIO    BIOLOGY                       3
+CS-101     INTRO. TO CIOMP.SCI  COMP.SCI                      4
+CS-190     GAME DESIGN          COMP.SCI                      4
+CS-315     ROBOTICS             COMP.SCI                      3
+CS-319     IMAGE PROCESSING     COMP.SCI                      3
+CS-347     DATABASE SYSTEM      COMP.SCI                      3
+EE-181     INTRO.TO DIGITAL SYS ELEC.ENG                      3
+FIN-201    INVESTEMENT BANKING  FINANCE                       3
+HIS-351    WORLD HISTORY        HISTORY                       3
+
+COURSE_ID  TITLE                DEPT_NAME               CREDITS
+---------- -------------------- -------------------- ----------
+MU-199     MUSIC VIDEO PRO      MUSIC                         3
+PHY-101    PHYSICAL PRINCIPLES  PHYSICS                       4

@@ -1,0 +1,14 @@
+SET SERVEROUTPUT ON;
+create or replace trigger credit_checker
+    before insert
+    on COURSE
+    for each row
+    when ( new.CREDITS < 3 )
+declare
+    XCEP EXCEPTION ;
+    PRAGMA EXCEPTION_INIT ( XCEP, -20001 );/*raise_application_error*/
+begin
+    DBMS_OUTPUT.PUT_LINE('CREDITS LESS THAN 3 CANT BE INSERTED');
+    raise XCEP;
+end;
+/
