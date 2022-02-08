@@ -1,0 +1,59 @@
+1. SQL> SELECT DEPT_NAME,COUNT(*),AVG(SALARY)
+  2  FROM INSTRUCTOR
+  3  GROUP BY DEPT_NAME;
+
+DEPT_NAME              COUNT(*)     AVG(SALARY)
+--------------------          ----------                -----------
+HISTORY                       2                   65650
+COMP.SCI                     3                 80691.6667
+ELEC.ENG                     1                  80000
+MUSIC                          1                     46200
+BIOLOGY                      1                   72000
+FINANCE                       2                   89500
+PHYSICS                        2                   100100
+
+2.SQL> SELECT COURSE_ID,COUNT(*),SEMESTER FROM TAKES
+  2  GROUP BY COURSE_ID,SEMESTER; COURSE_ID  SEMESTER     COUNT(*)
+COURSE_ID    SEMESTER         COUNT(*)
+----------         ----------                 ----------
+BIO-101    SUMMER              1
+CS-347     FALL                       1
+CS-101     SPRING                 1
+BIO-301    SUMMER             1
+CS-101     FALL                     1
+
+3. SQL> SELECT COURSE_ID,SEMESTER,COUNT(*)
+  2  FROM SECTION
+  3  GROUP BY COURSE_ID,SEMESTER
+  4  HAVING COUNT(*)>2;
+
+COURSE_ID  SEMESTER     COUNT(*)
+----------           ----------                      ----------
+CS-347     FALL                                 3
+CS-101     FALL                                 3
+
+4. SQL> SELECT COURSE_ID,INSTRUCTOR.NAME,COUNT(*)
+  2  FROM TEACHES NATURAL JOIN INSTRUCTOR
+  3  GROUP BY COURSE_ID,INSTRUCTOR.NAME;
+
+COURSE_ID   NAME                   COUNT(*)
+----------  --------------------             ----------
+CS-101     SRINIVASAN                    1
+CS-190     BRANDT                           2
+CS-101     KATZ                                 1
+BIO-301    CRICK                               1
+BIO-101    CRICK                               1
+CS-347     SRINIVASAN                    1
+
+
+
+5. SQL> SELECT DEPT_NAME,COUNT(ID)
+  2  FROM INSTRUCTOR
+  3  WHERE SALARY>80000
+  4  GROUP BY DEPT_NAME
+  5  HAVING COUNT(ID)>=2;
+
+DEPT_NAME             COUNT(ID)
+----- ---------------           ----------
+PHYSICS                       2
+

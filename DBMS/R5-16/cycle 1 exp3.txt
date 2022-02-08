@@ -1,0 +1,233 @@
+1i)  
+
+II) 
+ 
+
+iii) 
+iv)
+ 
+
+v) 
+
+
+vi) 
+
+vii)SQL> INSERT INTO TAKES
+  2  VALUES(00128,'CS-101',16062003,'FALL',2009,'A');
+
+1 row created.
+
+SQL> INSERT INTO TAKES
+  2  VALUES(12345,'CS-190',16062005,'SPRING',2009,'A-');
+
+1 row created.
+
+SQL> INSERT INTO TAKES
+  2  VALUES(98988,'BIO-101',16062001,'SUMMER',2009,'A');
+
+1 row created.
+
+SQL> SELECT * FROM TAKES;
+
+        ID COURSE_ID      SEC_ID SEMESTER         YEAR GRADE
+---------- ---------- ---------- ---------- ---------- -----
+       128 CS-101       16062003 FALL             2009 A
+     12345 CS-190       16062005 SPRING           2009 A-
+     98988 BIO-101      16062001 SUMMER           2009 A
+
+
+2. a)UPDATE STUDENT
+SET NAME=’MOZART’ 
+WHERE ID=44533;
+SQL> SELECT * FROM STUDENT;
+
+        ID NAME                 DEPT_NAME              TOT_CRED
+---------- -------------------- -------------------- ----------
+       128 ZHANG                COMP.SCI                    102
+     12345 SHANKAR              COMP.SCI                     32
+     19991 BRANDT               HISTORY                      80
+     23121 CHAVEZ               FINANCE                     110
+     44533 PELTIER              PHYSICS                      56
+     45678 MOZART               PHYSICS                      46
+
+b)SQL> UPDATE DEPARTMENT
+  2  SET BUDGET=100000,BUILDING='TAYLOR'
+  3  WHERE DEPT_NAME='HISTORY';
+
+1 row updated.
+
+SQL> SELECT * FROM DEPARTMENT;
+
+DEPT_NAME            BUILDING
+-------------------- --------------------------------------------------
+    BUDGET
+----------
+BIOLOGY              WATSON
+     90000
+
+COMP.SCI             TAYLOR
+    100000
+
+ELEC.ENG.            TAYLOR
+     85000
+
+
+DEPT_NAME            BUILDING
+-------------------- --------------------------------------------------
+    BUDGET
+----------
+FINANCE              PAINTER
+    120000
+
+HISTORY              TAYLOR
+    100000
+
+MUSIC                PACKARD
+     80000
+
+
+DEPT_NAME            BUILDING
+-------------------- --------------------------------------------------
+    BUDGET
+----------
+PHYSICS              WATSON
+     70000
+
+c) 
+SQL> UPDATE INSTRUCTOR
+  2  SET SALARY=SALARY*1.1;
+
+6 rows updated.
+
+SQL> SELECT * FROM INSTRUCTOR;
+
+        ID NAME                 DEPT_NAME                SALARY
+---------- -------------------- -------------------- ----------
+     15151 MOZART               MUSIC                     44000
+     22222 EINSTEIN             PHYSICS                  104500
+     32345 EI SAID              HISTORY                   66000
+     33456 GOLD                 PHYSICS                   95700
+     10101 SRINIVASAN           COMP.SCI                  71500
+     12121 WU                   FINANCE                   99000
+
+d) SQL> UPDATE COURSE
+  2  SET CREDITS=4
+  3  WHERE DEPT_NAME='COMP.SCI';
+
+3 rows updated.
+
+SQL> SELECT * FROM COURSE;
+
+COURSE_ID  TITLE                DEPT_NAME               CREDITS
+---------- -------------------- -------------------- ----------
+BIO-101    INTRO TO BIO         BIOLOGY                       4
+BIO-301    GENETICS             BIOLOGY                       4
+BIO-399    COMPUTATIONAL BIO    BIOLOGY                       3
+CS-101     INTRO TO CSE         COMP.SCI                      4
+CS-190     GAME DESIGN          COMP.SCI                      4
+CS-315     ROBOTICS             COMP.SCI                      4
+
+
+e) SQL> UPDATE STUDENT
+  2  SET TOT_CRED=TOT_CRED+1
+  3  WHERE TOT_CRED BETWEEN 20 AND 50;
+
+2 rows updated.
+
+SQL> SELECT * FROM STUDENT;
+
+        ID NAME                 DEPT_NAME              TOT_CRED
+---------- -------------------- -------------------- ----------
+       128 ZHANG                COMP.SCI                    102
+     12345 SHANKAR              COMP.SCI                     33
+     19991 BRANDT               HISTORY                      80
+     23121 CHAVEZ               FINANCE                     110
+     44533 PELTIER              PHYSICS                      56
+     45678 MOZART               PHYSICS                      47
+
+f) SQL> UPDATE INSTRUCTOR
+  2  SET SALARY=SALARY*1.05
+  3  WHERE SALARY<(SELECT AVG(SALARY)FROM INSTRUCTOR);
+
+3 rows updated.
+
+SQL> SELECT * FROM INSTRUCTOR;
+
+        ID NAME                 DEPT_NAME                SALARY
+---------- -------------------- -------------------- ----------
+     15151 MOZART               MUSIC                     46200
+     22222 EINSTEIN             PHYSICS                  104500
+     32345 EI SAID              HISTORY                   69300
+     33456 GOLD                 PHYSICS                   95700
+     10101 SRINIVASAN           COMP.SCI                  75075
+     12121 WU                   FINANCE                   99000
+
+g) SQL> UPDATE TEACHES
+  2  SET YEAR=2010
+  3  WHERE COURSE_ID='CS-101' AND SEMESTER='FALL';
+
+1 row updated.
+
+SQL> SELECT * FROM TEACHES;
+
+        ID COURSE_ID      SEC_ID SEMESTER         YEAR
+---------- ---------- ---------- ---------- ----------
+     76766 BIO-101      16062001 SUMMER           2009
+     76766 BIO-301      16062002 SUMMER           2010
+     10101 CS-101       16062003 FALL             2010
+     10101 CS-347       16062004 FALL             2009
+     45565 CS-101       16062005 SPRING           2009
+
+3) 
+SQL> DELETE FROM STUDENT
+  2  WHERE TOT_CRED=0;
+
+1 row deleted.
+
+SQL> SELECT * FROM STUDENT;
+
+        ID NAME                 DEPT_NAME              TOT_CRED
+---------- -------------------- -------------------- ----------
+       128 ZHANG                COMP.SCI                    102
+     12345 SHANKAR              COMP.SCI                     33
+     19991 BRANDT               HISTORY                      80
+     23121 CHAVEZ               FINANCE                     110
+     44533 PELTIER              PHYSICS                      56
+     45678 MOZART               PHYSICS                      47
+
+4) 
+SQL> DELETE FROM INSTRUCTOR
+  2  WHERE ID LIKE '765%';
+
+1 row deleted.
+
+SQL> SELECT * FROM INSTRUCTOR;
+
+        ID NAME                 DEPT_NAME                SALARY
+---------- -------------------- -------------------- ----------
+     15151 MOZART               MUSIC                     46200
+     22222 EINSTEIN             PHYSICS                  104500
+     32345 EI SAID              HISTORY                   69300
+     33456 GOLD                 PHYSICS                   95700
+     10101 SRINIVASAN           COMP.SCI                  75075
+     12121 WU                   FINANCE                   99000
+
+5) SQL> DELETE FROM COURSE
+  2  WHERE COURSE_ID NOT IN(SELECT COURSE_ID FROM SECTION);
+
+3 rows deleted.
+
+SQL> SELECT * FROM COURSE;
+
+COURSE_ID  TITLE                DEPT_NAME               CREDITS
+---------- -------------------- -------------------- ----------
+BIO-101    INTRO TO BIO         BIOLOGY                       4
+BIO-301    GENETICS             BIOLOGY                       4
+CS-101     INTRO TO CSE         COMP.SCI                      4
+
+
+
+
+
+
+

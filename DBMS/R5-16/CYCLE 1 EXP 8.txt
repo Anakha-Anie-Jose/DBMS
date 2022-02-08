@@ -1,0 +1,95 @@
+1.	a)SQL> SELECT ROUND(COS(ABS(-10))*EXP(2),2) FROM DUAL;
+
+ROUND(COS(ABS(-10))*EXP(2),2)
+        -----------------------------
+                         -6.2
+
+B0 SQL> SELECT ROUND(LOG(SQRT(MOD(POWER(5,4),14)),10),2) FROM DUAL;
+
+ROUND(LOG(SQRT(MOD(POWER(5,4),14)),10),2)
+-----------------------------------------
+                                      2.1
+
+c) SQL> SELECT SIGN(SIN(30*3.14/180)+TAN(60*3.14/180)) FROM DUAL;
+
+SIGN(SIN(30*3.14/180)+TAN(60*3.14/180))
+---------------------------------------
+                                      1
+
+2. SQL> SELECT CEIL(12.9),FLOOR(12.9) FROM DUAL;
+
+CEIL(12.9) FLOOR(12.9)
+---------- -----------
+        13          12
+
+
+3. SQL> SELECT UPPER(NAME),LOWER(NAME),INITCAP(NAME) FROM INSTRUCTOR;
+
+UPPER(NAME)          LOWER(NAME)          INITCAP(NAME)
+-------------------- -------------------- --------------------
+KATZ                      katz                                         Katz
+CALIFERI               califeri                                    Califeri
+CRICK                    crick                                        Crick
+BRANDT               brandt                                    Brandt
+KIM                        kim                                         Kim
+MOZART               mozart                                  Mozart
+EINSTEIN               einstein                                  Einstein
+EI SAID                  ei said                    Ei Said
+GOLD                     gold                       Gold
+SRINIVASAN         srinivasan            Srinivasan
+WU                         wu                        Wu
+
+
+
+4. SQL> SELECT REPLACE (COURSE_ID,'-','/') FROM COURSE;
+
+REPLACE(COURSE_ID)
+----------
+BIO/101
+BIO/301
+BIO/399
+CS/101
+CS/190
+CS/315
+CS/319
+CS/347
+EE/181
+FIN/201
+HIS/351
+MU/199
+PHY/101
+
+5. SQL> SELECT NAME,DEPT_NAME AS FULL_NAME FROM INSTRUCTOR;
+
+NAME                 FULL_NAME
+-------------------- --------------------
+KATZ                   COMP.SCI
+CALIFERI             HISTORY
+CRICK                  BIOLOGY
+BRANDT              COMP.SCI
+KIM                      ELEC.ENG
+MOZART              MUSIC
+EINSTEIN             PHYSICS
+EI SAID                 HISTORY
+GOLD                    PHYSICS
+SRINIVASAN        COMP.SCI
+WU                        FINANCE
+
+6. SQL> SELECT SUBSTR(COURSE_ID,-3)
+  2  FROM COURSE;
+
+SUB
+---
+101
+301
+399
+101
+190
+315
+319
+347
+181
+201
+351
+199
+101

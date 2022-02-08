@@ -1,0 +1,134 @@
+1.	
+SQL> CREATE VIEW YEARWISE AS
+    SELECT * FROM SECTION
+    WHERE YEAR=2009;
+SQL> SELECT * FROM YEARWISE;
+
+COURSE_ID      SEC_ID SEMESTER                                     YEAR
+----------                 ----------              ----------                         ----------
+BUILDING                                           ROOM_NUMBER
+-------------------------------------------------- -----------
+BIO-101      16062001 SUMMER           2009
+PAINTER                                                    514
+
+CS-101       16062003 FALL             2009
+PACKARD                                                    101
+
+CS-347       16062004 FALL             2009
+TAYLOR                                                    3128
+
+
+
+2. SQL> CREATE VIEW STUDENTLIST AS
+  2  SELECT * FROM STUDENT
+  3  ORDER BY NAME;
+
+View created.
+
+SQL> SELECT * FROM STUDENTLIST;
+
+        ID NAME                 DEPT_NAME              TOT_CRED DOB
+---------- -------------------- -------------------- ---------- ---------
+     76653 AOI                  ELEC.ENG                     60
+     19991 BRANDT               HISTORY                      80
+     23121 CHAVEZ               FINANCE                     110
+     44553 JOHN                 PHYSICS                      56
+     67890 MEGHA                COMP.SCI                     63 16-JUN-01
+     45678 MOZART               PHYSICS                      47
+     12345 SHANKAR              COMP.SCI                     33
+       128 ZHANG                COMP.SCI                    102
+
+3. SQL> CREATE VIEW TEACHER AS
+   SELECT * FROM INSTRUCTOR
+    WHERE ID NOT IN(SELECT ID FROM TEACHES);
+
+View created.
+
+SQL> SELECT * FROM TEACHER;
+
+        ID NAME                 DEPT_NAME                SALARY
+---------- -------------------- -------------------- ----------
+     22222 EINSTEIN             PHYSICS                  104500
+     98345 KIM                  ELEC.ENG                  80000
+     12121 WU                   FINANCE                   99000
+     15151 MOZART               MUSIC                     46200
+     58583 CALIFERI             HISTORY                   62000
+     33456 GOLD                 PHYSICS                   95700
+     32345 EI SAID              HISTORY                   69300
+     83821 BRANDT               COMP.SCI                  92000
+
+
+4. SQL> INSERT INTO STUDENTLIST
+  2  VALUES(77890,'APPU','COMP.SCI',100,TO_DATE('14/08/2001','DD/MM/YYYY'));
+
+SQL> SELECT * FROM STUDENTLIST;
+
+        ID NAME                 DEPT_NAME              TOT_CRED DOB
+---------- -------------------- -------------------- ---------- ---------
+     76653 AOI                  ELEC.ENG                     60
+     77890 APPU                 COMP.SCI                    100 14-AUG-01
+     19991 BRANDT               HISTORY                      80
+     23121 CHAVEZ               FINANCE                     110
+     44553 JOHN                 PHYSICS                      56
+     67890 MEGHA                COMP.SCI                     63 16-JUN-01
+     45678 MOZART               PHYSICS                      47
+     12345 SHANKAR              COMP.SCI                     33
+       128 ZHANG                COMP.SCI                    102
+
+9 rows selected.
+
+SQL> UPDATE STUDENTLIST
+  2  SET NAME='SAVIOUR' WHERE ID=77890;
+
+1 row updated.
+
+SQL> SELECT * FROM STUDENTLIST;
+
+        ID NAME                 DEPT_NAME              TOT_CRED DOB
+---------- -------------------- -------------------- ---------- ---------
+     76653 AOI                  ELEC.ENG                     60
+     19991 BRANDT               HISTORY                      80
+     23121 CHAVEZ               FINANCE                     110
+     44553 JOHN                 PHYSICS                      56
+     67890 MEGHA                COMP.SCI                     63 16-JUN-01
+     45678 MOZART               PHYSICS                      47
+     77890 SAVIOUR              COMP.SCI                    100 14-AUG-01
+     12345 SHANKAR              COMP.SCI                     33
+       128 ZHANG                COMP.SCI                    102
+
+
+
+
+
+5. SQL> DELETE FROM STUDENTLIST
+  2  WHERE ID=77890;
+
+1 row deleted.
+
+SQL> SELECT * FROM STUDENTLIST;
+
+        ID NAME                 DEPT_NAME              TOT_CRED DOB
+---------- -------------------- -------------------- ---------- ---------
+     76653 AOI                  ELEC.ENG                     60
+     19991 BRANDT               HISTORY                      80
+     23121 CHAVEZ               FINANCE                     110
+     44553 JOHN                 PHYSICS                      56
+     67890 MEGHA                COMP.SCI                     63 16-JUN-01
+     45678 MOZART               PHYSICS                      47
+     12345 SHANKAR              COMP.SCI                     33
+       128 ZHANG                COMP.SCI                    102
+
+
+
+6. SQL> DROP VIEW YEARWISE;
+
+View dropped.
+
+SQL> DROP VIEW STUDENTLIST
+
+View dropped.
+
+SQL> DROP VIEW TEACHER;
+
+View dropped.
+

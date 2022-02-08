@@ -1,0 +1,112 @@
+EXP 4
+
+1.	
+SQL> SELECT NAME,DEPT_NAME FROM INSTRUCTOR;
+
+NAME                 DEPT_NAME
+-------------------- --------------------
+MOZART               MUSIC
+EINSTEIN             PHYSICS
+EI SAID              HISTORY
+GOLD                 PHYSICS
+SRINIVASAN           COMP.SCI
+WU                   FINANCE
+2. SQL> SELECT DISTINCT SEMESTER FROM TEACHES;
+
+SEMESTER
+----------
+SPRING
+SUMMER
+FALL
+
+3. SQL> SELECT NAME,SALARY*1.1 FROM INSTRUCTOR;
+
+NAME                 SALARY*1.1
+-------------------- ----------
+MOZART                    50820
+EINSTEIN                 114950
+EI SAID                   76230
+GOLD                     105270
+SRINIVASAN              82582.5
+WU                       108900
+
+4. SQL> SELECT NAME FROM INSTRUCTOR
+  2  WHERE DEPT_NAME='COMP.SCI'AND
+  3  SALARY>70000;
+
+NAME
+--------------------
+SRINIVASAN
+
+5. SQL> SELECT I.NAME,I.DEPT_NAME,D.BUILDING FROM INSTRUCTOR I,DEPARTMENT D
+  2  WHERE I.DEPT_NAME=D.DEPT_NAME;
+
+NAME                 DEPT_NAME
+-------------------- --------------------
+BUILDING
+--------------------------------------------------
+SRINIVASAN           COMP.SCI
+TAYLOR
+
+WU                   FINANCE
+PAINTER
+
+EI SAID              HISTORY
+TAYLOR
+
+
+NAME                 DEPT_NAME
+-------------------- --------------------
+BUILDING
+--------------------------------------------------
+MOZART               MUSIC
+PACKARD
+
+GOLD                 PHYSICS
+WATSON
+
+EINSTEIN             PHYSICS
+WATSON
+
+6) 
+SQL> SELECT I.NAME,T.COURSE_ID FROM INSTRUCTOR I,TEACHES T
+  2  WHERE I.DEPT_NAME='COMP.SCI'AND I.ID=T.ID;
+
+NAME                 COURSE_ID
+-------------------- ----------
+SRINIVASAN           CS-101
+SRINIVASAN           CS-347
+7) SQL> SELECT * FROM COURSE WHERE TITLE LIKE'INTRO%';
+
+COURSE_ID  TITLE                DEPT_NAME               CREDITS
+---------- -------------------- -------------------- ----------
+BIO-101    INTRO TO BIO         BIOLOGY                       4
+CS-101     INTRO TO CSE         COMP.SCI                      4
+
+8) SQL> SELECT * FROM COURSE WHERE TITLE LIKE '%COMP%';
+
+COURSE_ID  TITLE                DEPT_NAME               CREDITS
+---------- -------------------- -------------------- ----------
+BIO-399    COMPUTATIONAL BIO    BIOLOGY                 3
+
+9) SQL> SELECT * FROM STUDENT
+  2  WHERE LENGTH(NAME)=3;
+
+        ID NAME                 DEPT_NAME              TOT_CRED
+---------- -------------------- -------------------- ----------
+     76653 AOI                  ELEC.ENG                     60
+
+10) SQL> SELECT * FROM INSTRUCTOR
+  2  WHERE LENGTH(NAME)>=3;
+
+        ID NAME                 DEPT_NAME                SALARY
+---------- -------------------- -------------------- ----------
+     15151 MOZART               MUSIC                     46200
+     22222 EINSTEIN             PHYSICS                  104500
+     32345 EI SAID              HISTORY                   69300
+     33456 GOLD                 PHYSICS                   95700
+     10101 SRINIVASAN           COMP.SCI                  75075
+      
+
+
+

@@ -1,0 +1,165 @@
+EXP 5
+
+1)SQL> UPDATE STUDENT
+SET NAME=’JOHN’
+WHERE ID=4553;
+SELECT * FROM STUDENT;
+
+        
+      ID NAME                 DEPT_NAME              TOT_CRED DOB
+-------- -------------------- -------------------- ---------- ---------
+   76653 AOI                  ELEC.ENG                     60 10-MAY-10
+      128 ZHANG                COMP.SCI                    102 24-JUL-00
+   12345 SHANKAR              COMP.SCI                     33 01-JAN-01
+   19991 BRANDT               HISTORY                      80 10-JAN-02
+   23121 CHAVEZ               FINANCE                     110 25-MAR-05
+   44553 JOHN                 PHYSICS                      56 30-APR-04
+   45678 MOZART               PHYSICS                      47 07-AUG-99
+2) 
+SQL> COMMIT;
+
+Commit complete.
+
+3) SQL> UPDATE STUDENT
+  2  SET NAME='PELTIER' WHERE ID=44553;
+
+1 row updated.
+
+SQL> SELECT * FROM STUDENT;
+
+        ID NAME                 DEPT_NAME              TOT_CRED DOB
+---------- -------------------- -------------------- ---------- ---------
+     
+      ID NAME                 DEPT_NAME              TOT_CRED DOB
+-------- -------------------- -------------------- ---------- ---------
+   76653 AOI                  ELEC.ENG                     60 10-MAY-10
+     128 ZHANG                COMP.SCI                    102 24-JUL-00
+   12345 SHANKAR              COMP.SCI                     33 01-JAN-01
+   19991 BRANDT               HISTORY                      80 10-JAN-02
+   23121 CHAVEZ               FINANCE                     110 25-MAR-05
+   44553 PELTIER                PHYSICS                      56 30-APR-04
+   45678 MOZART               PHYSICS                      47 07-AUG-99
+
+4) SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM STUDENT;
+
+      ID NAME                 DEPT_NAME              TOT_CRED DOB
+-------- -------------------- -------------------- ---------- ---------
+   76653 AOI                  ELEC.ENG                     60 10-MAY-10
+     128 ZHANG                COMP.SCI                    102 24-JUL-00
+   12345 SHANKAR              COMP.SCI                     33 01-JAN-01
+   19991 BRANDT               HISTORY                      80 10-JAN-02
+   23121 CHAVEZ               FINANCE                     110 25-MAR-05
+   44553 JOHN                 PHYSICS                      56 30-APR-04
+   45678 MOZART               PHYSICS                      47 07-AUG-99
+
+5. SQL> INSERT INTO STUDENT
+  2  VALUES(67890,'ANAKHA','COMP.SCI',63,TO_DATE('16/06/2001','DD/MM/YYYY'));
+
+
+UPDATE STUDENT
+SET NAME='MEGHA'
+WHERE ID=67890;
+
+SQL> SELECT * FROM STUDENT;
+
+        
+      ID    NAME                 DEPT_NAME              TOT_CRED DOB
+-------- -------------------- -------------------- ---------- ---------
+   76653 AOI                  ELEC.ENG                     60 10-MAY-10
+   67890 MEGHA                COMP.SCI                     63 16-JUN-01
+     128 ZHANG                COMP.SCI                    102 24-JUL-00
+   12345 SHANKAR              COMP.SCI                     33 01-JAN-01
+   19991 BRANDT               HISTORY                      80 10-JAN-02
+   23121 CHAVEZ               FINANCE                     110 25-MAR-05
+   44553 JOHN                 PHYSICS                      56 30-APR-04
+   45678 MOZART               PHYSICS                      47 07-AUG-99
+
+
+
+SQL> SAVEPOINT S1;
+
+Savepoint created.
+
+SQL> UPDATE STUDENT
+  2  SET TOT_CRED=100
+  3  WHERE ID=67890;
+
+1 row updated.
+
+SQL> SELECT * FROM STUDENT;
+
+        
+      ID NAME                 DEPT_NAME              TOT_CRED DOB
+-------- -------------------- -------------------- ---------- ---------
+   76653 AOI                  ELEC.ENG                     60 10-MAY-10
+   67890 MEGHA                COMP.SCI                     100 16-JUN-01
+     128 ZHANG                COMP.SCI                    102 24-JUL-00
+   12345 SHANKAR              COMP.SCI                     33 01-JAN-01
+   19991 BRANDT               HISTORY                      80 10-JAN-02
+   23121 CHAVEZ               FINANCE                     110 25-MAR-05
+   44553 JOHN                 PHYSICS                      56 30-APR-04
+   45678 MOZART               PHYSICS                      47 07-AUG-99
+
+SQL> SAVEPOINT S2;
+SQL> UPDATE STUDENT
+  2  SET DEPT_NAME='ELEC.ENG'
+  3  WHERE ID=67890;
+
+1 row updated.
+
+SQL> SELECT * FROM STUDENT;
+
+        
+      ID NAME                 DEPT_NAME              TOT_CRED DOB
+-------- -------------------- -------------------- ---------- ---------
+   76653 AOI                  ELEC.ENG                     60 10-MAY-10
+   67890 MEGHA                ELEC.ENG                    63 16-JUN-01
+     128 ZHANG                COMP.SCI                    102 24-JUL-00
+   12345 SHANKAR              COMP.SCI                     33 01-JAN-01
+   19991 BRANDT               HISTORY                      80 10-JAN-02
+   23121 CHAVEZ               FINANCE                     110 25-MAR-05
+   44553 JOHN                 PHYSICS                      56 30-APR-04
+   45678 MOZART               PHYSICS                      47 07-AUG-99
+     45678 MOZART               PHYSICS                      47
+
+6. SQL> ROLLBACK TO S2;
+
+Rollback complete.
+
+SQL> SELECT * FROM STUDENT;
+
+
+      ID NAME                 DEPT_NAME              TOT_CRED DOB
+-------- -------------------- -------------------- ---------- ---------
+   76653 AOI                  ELEC.ENG                     60 10-MAY-10
+   67890 MEGHA                COMP.SCI                     100 16-JUN-01
+     128 ZHANG                COMP.SCI                    102 24-JUL-00
+   12345 SHANKAR              COMP.SCI                     33 01-JAN-01
+   19991 BRANDT               HISTORY                      80 10-JAN-02
+   23121 CHAVEZ               FINANCE                     110 25-MAR-05
+   44553 JOHN                 PHYSICS                      56 30-APR-04
+   45678 MOZART               PHYSICS                      47 07-AUG-99
+8 rows selected.
+
+SQL> ROLLBACK TO S1;
+
+Rollback complete.
+
+SQL> SELECT * FROM STUDENT;
+
+       
+      ID NAME                 DEPT_NAME              TOT_CRED DOB
+-------- -------------------- -------------------- ---------- ---------
+   76653 AOI                  ELEC.ENG                     60 10-MAY-10
+   67890 MEGHA                COMP.SCI                     63 16-JUN-01
+     128 ZHANG                COMP.SCI                    102 24-JUL-00
+   12345 SHANKAR              COMP.SCI                     33 01-JAN-01
+   19991 BRANDT               HISTORY                      80 10-JAN-02
+   23121 CHAVEZ               FINANCE                     110 25-MAR-05
+   44553 JOHN                 PHYSICS                      56 30-APR-04
+   45678 MOZART               PHYSICS                      47 07-AUG-99
+

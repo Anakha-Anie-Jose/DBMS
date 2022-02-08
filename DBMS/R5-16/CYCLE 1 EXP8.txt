@@ -1,0 +1,34 @@
+1. SQL> SELECT SUM(SALARY),MAX(SALARY),MIN(SALARY)
+  2  FROM INSTRUCTOR;
+
+SUM(SALARY)   MAX(SALARY)     MIN(SALARY)
+-----------              -----------                    -----------
+     950775             104500                          46200
+
+2. SQL> SELECT SUM(SALARY),AVG(SALARY),MIN(SALARY),MAX(SALARY) FROM INSTRUCTOR
+  2  WHERE DEPT_NAME='HISTORY';
+
+SUM(SALARY)   AVG(SALARY)   MIN(SALARY)   MAX(SALARY)
+-----------            -----------               -----------                   -----------
+     131300         65650                            62000              69300
+
+3. SQL> SELECT COUNT(*) FROM INSTRUCTOR;
+
+  COUNT(*)
+   ----------
+        12
+
+
+4. SQL> SELECT COUNT(*) FROM INSTRUCTOR
+  2  WHERE DEPT_NAME='COMP.SCI';
+
+  COUNT(*)
+   ----------
+         3
+
+
+5. SQL> SELECT COUNT(DISTINCT(SALARY)) FROM INSTRUCTOR;
+
+COUNT(DISTINCT(SALARY))
+-----------------------
+                     11
